@@ -1,0 +1,242 @@
+{
+  "institution": "University of California, Berkeley",
+  "catalog_years": [
+    "2024-2025",
+    "2025-2026"
+  ],
+  "accessed_date": "2026-03-27",
+  "document_count": 33,
+  "documents": [
+    {
+      "id": "course-compsci-61a",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 61A",
+      "note": "Course description and prerequisite summary for COMPSCI 61A The Structure and Interpretation of Computer Programs."
+    },
+    {
+      "id": "course-compsci-61b",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 61B",
+      "note": "Course description and prerequisite summary for COMPSCI 61B Data Structures."
+    },
+    {
+      "id": "course-compsci-61bl",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 61BL",
+      "note": "Course description and prerequisite summary for COMPSCI 61BL Data Structures and Programming Methodology."
+    },
+    {
+      "id": "course-compsci-61c",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 61C",
+      "note": "Course description and prerequisite summary for COMPSCI 61C Machine Structures."
+    },
+    {
+      "id": "course-compsci-70",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 70",
+      "note": "Course description and prerequisite summary for COMPSCI 70 Discrete Mathematics and Probability Theory."
+    },
+    {
+      "id": "course-math-53",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/math/",
+      "section": "MATH 53",
+      "note": "Course description and prerequisite summary for MATH 53 Multivariable Calculus."
+    },
+    {
+      "id": "course-math-54",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/math/",
+      "section": "MATH 54",
+      "note": "Course description and prerequisite summary for MATH 54 Linear Algebra and Differential Equations."
+    },
+    {
+      "id": "course-compsci-152",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 152",
+      "note": "Course description and prerequisite summary for COMPSCI 152 Computer Architecture and Engineering."
+    },
+    {
+      "id": "course-compsci-160",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 160",
+      "note": "Course description and prerequisite summary for COMPSCI 160 User Interface Design and Development."
+    },
+    {
+      "id": "course-compsci-161",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 161",
+      "note": "Course description and prerequisite summary for COMPSCI 161 Computer Security."
+    },
+    {
+      "id": "course-compsci-162",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 162",
+      "note": "Course description and prerequisite summary for COMPSCI 162 Operating Systems and System Programming."
+    },
+    {
+      "id": "course-compsci-164",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 164",
+      "note": "Course description and prerequisite summary for COMPSCI 164 Programming Languages and Compilers."
+    },
+    {
+      "id": "course-compsci-168",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 168",
+      "note": "Course description and prerequisite summary for COMPSCI 168 Introduction to the Internet: Architecture and Protocols."
+    },
+    {
+      "id": "course-compsci-169a",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 169A",
+      "note": "Course description and prerequisite summary for COMPSCI 169A Introduction to Software Engineering."
+    },
+    {
+      "id": "course-compsci-170",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 170",
+      "note": "Course description and prerequisite summary for COMPSCI 170 Efficient Algorithms and Intractable Problems."
+    },
+    {
+      "id": "course-compsci-176",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 176",
+      "note": "Course description and prerequisite summary for COMPSCI 176 Computational Biology."
+    },
+    {
+      "id": "course-compsci-186",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 186",
+      "note": "Course description and prerequisite summary for COMPSCI 186 Introduction to Database Systems."
+    },
+    {
+      "id": "course-compsci-188",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 188",
+      "note": "Course description and prerequisite summary for COMPSCI 188 Introduction to Artificial Intelligence."
+    },
+    {
+      "id": "course-compsci-189",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 189",
+      "note": "Course description and prerequisite summary for COMPSCI 189 Introduction to Machine Learning."
+    },
+    {
+      "id": "course-compsci-195",
+      "category": "course-description",
+      "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
+      "section": "COMPSCI 195",
+      "note": "Course description and prerequisite summary for COMPSCI 195 Social Implications of Computer Technology."
+    },
+    {
+      "id": "cs-ba-overview",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "Choosing a Computer Science Path",
+      "note": "Requirement record for BA Computer Science - Choosing a Computer Science Path."
+    },
+    {
+      "id": "cs-ba-major",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "Major Requirements",
+      "note": "Requirement record for BA Computer Science - Major Requirements."
+    },
+    {
+      "id": "cs-ba-upperdiv",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "Upper Division Requirements",
+      "note": "Requirement record for BA Computer Science - Upper Division Requirements."
+    },
+    {
+      "id": "cs-ba-college",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "College and Breadth Requirements",
+      "note": "Requirement record for BA Computer Science - College and Breadth Requirements."
+    },
+    {
+      "id": "cs-minor",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "Minor Requirements",
+      "note": "Requirement record for Computer Science Minor - Minor Requirements."
+    },
+    {
+      "id": "eecs-bs-major",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/electrical-engineering-computer-sciences/",
+      "section": "Major Requirements",
+      "note": "Requirement record for BS Electrical Engineering and Computer Sciences - Major Requirements."
+    },
+    {
+      "id": "cs-ba-planning",
+      "category": "program-requirement",
+      "source_url": "https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/",
+      "section": "Plan of Study",
+      "note": "Requirement record for BA Computer Science - Plan of Study."
+    },
+    {
+      "id": "policy-units-gpa",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/undergraduate/degree-requirements/",
+      "section": "Units and GPA",
+      "note": "Policy record covering Units and GPA."
+    },
+    {
+      "id": "policy-grades",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/undergraduate/academic-policies/grades/",
+      "section": "Grades",
+      "note": "Policy record covering Grades."
+    },
+    {
+      "id": "policy-repeat",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/undergraduate/academic-policies/courses-units/",
+      "section": "Courses and Units",
+      "note": "Policy record covering Courses and Units."
+    },
+    {
+      "id": "policy-american-cultures",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/undergraduate/academic-policies/american-cultures-requirement/",
+      "section": "American Cultures Requirement",
+      "note": "Policy record covering American Cultures Requirement."
+    },
+    {
+      "id": "policy-reading-composition",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/earning-your-degree/university-campus-requirements/entry-level-writing-and-reading-composition-requirements/",
+      "section": "Entry-Level Writing and Reading and Composition Requirements",
+      "note": "Policy record covering Entry-Level Writing and Reading and Composition Requirements."
+    },
+    {
+      "id": "policy-ahi",
+      "category": "policy",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/earning-your-degree/university-campus-requirements/american-history-and-institutions-requirement/",
+      "section": "American History and Institutions Requirement",
+      "note": "Policy record covering American History and Institutions Requirement."
+    }
+  ]
+}

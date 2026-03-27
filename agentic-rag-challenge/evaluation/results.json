@@ -1,0 +1,240 @@
+{
+  "total_queries": 25,
+  "metrics": {
+    "citation_coverage": 96.0,
+    "eligibility_accuracy": 100.0,
+    "chain_accuracy": 100.0,
+    "program_accuracy": 100.0,
+    "abstention_accuracy": 100.0,
+    "format_compliance": 100.0
+  },
+  "weighted_score": 99.2,
+  "grading_note": "This script provides an automated proxy for the rubric. Manual review is still recommended for nuanced chain reasoning and citation specificity.",
+  "results": [
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-1",
+      "query": "Can I take COMPSCI 170 if I've completed COMPSCI 61B and COMPSCI 70?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 170. [C1]\nNext step: You can add COMPSCI 170 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed COMPSCI 61B, which satisfies one listed prerequisite for COMPSCI 170. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 170. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 170 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-2",
+      "query": "I've only completed COMPSCI 61B. Can I enroll in COMPSCI 170?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 170 are not fully satisfied yet. [C1]\nNext step: Complete COMPSCI 70 before attempting COMPSCI 170. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed COMPSCI 61B, which satisfies one listed prerequisite for COMPSCI 170. [C1]\n- You still need COMPSCI 70 for COMPSCI 170. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 170 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-3",
+      "query": "Can I take COMPSCI 161 if I've completed COMPSCI 61B, COMPSCI 61C, and COMPSCI 70?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 161. [C1]\nNext step: You can add COMPSCI 161 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed COMPSCI 61B, which satisfies one listed prerequisite for COMPSCI 161. [C1]\n- You completed COMPSCI 61C, which satisfies one listed prerequisite for COMPSCI 161. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 161. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 161 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-4",
+      "query": "I've completed COMPSCI 61B and COMPSCI 70, but not COMPSCI 61C. Can I take COMPSCI 161?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 161 are not fully satisfied yet. [C1]\nNext step: Complete COMPSCI 61C before attempting COMPSCI 161. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed COMPSCI 61B, which satisfies one listed prerequisite for COMPSCI 161. [C1]\n- You still need COMPSCI 61C for COMPSCI 161. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 161. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 161 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-5",
+      "query": "Can I take COMPSCI 160 with COMPSCI 61BL completed?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 160. [C1]\nNext step: You can add COMPSCI 160 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- The alternative prerequisite `COMPSCI 61B OR COMPSCI 61BL` is satisfied via COMPSCI 61BL. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 160 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-6",
+      "query": "Can I take COMPSCI 186 if I already finished COMPSCI 61C?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 186. [C1]\nNext step: You can add COMPSCI 186 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- The alternative prerequisite `COMPSCI 61C OR COMPSCI 47C` is satisfied via COMPSCI 61C. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The catalog also notes co-requisite handling for COMPSCI 47C in some cases. [C1]"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-7",
+      "query": "Can I take COMPSCI 186 without COMPSCI 61C or COMPSCI 47C?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 186 are not fully satisfied yet. [C1]\nNext step: Complete COMPSCI 61C, COMPSCI 47C before attempting COMPSCI 186. [C1]\nWhy (requirements/prereqs satisfied):\n- You still need COMPSCI 61C or COMPSCI 47C for COMPSCI 186. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The catalog also notes co-requisite handling for COMPSCI 47C in some cases. [C1]"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-8",
+      "query": "Can I take COMPSCI 188 if I have COMPSCI 61A, COMPSCI 61B, and COMPSCI 70?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 188. [C1]\nNext step: You can add COMPSCI 188 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed COMPSCI 61A, which satisfies one listed prerequisite for COMPSCI 188. [C1]\n- The alternative prerequisite `COMPSCI 61B OR COMPSCI 61BL` is satisfied via COMPSCI 61B. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 188. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 188 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-9",
+      "query": "Can I take COMPSCI 189 if I have MATH 53, MATH 54, and COMPSCI 70?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 189. [C1]\nNext step: You can add COMPSCI 189 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed MATH 53, which satisfies one listed prerequisite for COMPSCI 189. [C1]\n- You completed MATH 54, which satisfies one listed prerequisite for COMPSCI 189. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 189. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 189 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "simple_prerequisite",
+      "query_id": "PREREQ-10",
+      "query": "Can I take COMPSCI 189 if I only have MATH 53 and COMPSCI 70?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 189 are not fully satisfied yet. [C1]\nNext step: Complete MATH 54 before attempting COMPSCI 189. [C1]\nWhy (requirements/prereqs satisfied):\n- You completed MATH 53, which satisfies one listed prerequisite for COMPSCI 189. [C1]\n- You still need MATH 54 for COMPSCI 189. [C1]\n- You completed COMPSCI 70, which satisfies one listed prerequisite for COMPSCI 189. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 189 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "chain_reasoning",
+      "query_id": "CHAIN-1",
+      "query": "What is the full prerequisite chain to reach COMPSCI 162 from scratch?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nChain identified: COMPSCI 162 requires COMPSCI 61B and COMPSCI 61C and COMPSCI 70. COMPSCI 61B requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. COMPSCI 61C requires COMPSCI 61A and COMPSCI 61B or COMPSCI 61BL. COMPSCI 61BL requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\nNext step: Complete the courses in dependency order before attempting COMPSCI 162. [C1, C2, C3, C4]\nWhy (requirements/prereqs satisfied):\n- COMPSCI 162 requires COMPSCI 61B and COMPSCI 61C and COMPSCI 70. [C1, C2, C3, C4]\n- COMPSCI 61B requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\n- COMPSCI 61C requires COMPSCI 61A and COMPSCI 61B or COMPSCI 61BL. [C1, C2, C3, C4]\n- COMPSCI 61BL requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 162 Rules & Requirements, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61B Rules & Requirements, accessed 2026-03-27]\n- [C3] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61C Rules & Requirements, accessed 2026-03-27]\n- [C4] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61BL Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- This chain summarizes the curated catalog records and does not expand non-course readiness language unless it was encoded as a course prerequisite. [C1, C2, C3, C4]"
+    },
+    {
+      "category": "chain_reasoning",
+      "query_id": "CHAIN-2",
+      "query": "What is the full prerequisite chain to reach COMPSCI 189 from scratch?",
+      "correct": true,
+      "citation_present": false,
+      "format_ok": true,
+      "response": "Answer / Plan:\nChain identified: COMPSCI 189 requires MATH 53 and MATH 54 and COMPSCI 70. [C1]\nNext step: Complete the courses in dependency order before attempting COMPSCI 189. [C1]\nWhy (requirements/prereqs satisfied):\n- COMPSCI 189 requires MATH 53 and MATH 54 and COMPSCI 70. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 189 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- This chain summarizes the curated catalog records and does not expand non-course readiness language unless it was encoded as a course prerequisite. [C1]"
+    },
+    {
+      "category": "chain_reasoning",
+      "query_id": "CHAIN-3",
+      "query": "I already have COMPSCI 61A. What remaining prerequisite chain should I finish before COMPSCI 161?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nChain identified: COMPSCI 161 requires COMPSCI 61B and COMPSCI 61C and COMPSCI 70. COMPSCI 61B requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. COMPSCI 61C requires COMPSCI 61A and COMPSCI 61B or COMPSCI 61BL. COMPSCI 61BL requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\nNext step: Complete the courses in dependency order before attempting COMPSCI 161. [C1, C2, C3, C4]\nWhy (requirements/prereqs satisfied):\n- COMPSCI 161 requires COMPSCI 61B and COMPSCI 61C and COMPSCI 70. [C1, C2, C3, C4]\n- COMPSCI 61B requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\n- COMPSCI 61C requires COMPSCI 61A and COMPSCI 61B or COMPSCI 61BL. [C1, C2, C3, C4]\n- COMPSCI 61BL requires COMPSCI 61A or COMPSCI 88 or ENGIN 7. [C1, C2, C3, C4]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 161 Rules & Requirements, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61B Rules & Requirements, accessed 2026-03-27]\n- [C3] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61C Rules & Requirements, accessed 2026-03-27]\n- [C4] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61BL Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- This chain summarizes the curated catalog records and does not expand non-course readiness language unless it was encoded as a course prerequisite. [C1, C2, C3, C4]"
+    },
+    {
+      "category": "chain_reasoning",
+      "query_id": "CHAIN-4",
+      "query": "Show all valid paths if a prerequisite allows either COMPSCI 61B or COMPSCI 61BL before an upper-division course.",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nMultiple valid paths: the catalog allows COMPSCI 61C after COMPSCI 61A plus either COMPSCI 61B or COMPSCI 61BL, so one valid route is COMPSCI 61A -> COMPSCI 61B -> COMPSCI 61C -> COMPSCI 161, and another is COMPSCI 61A -> COMPSCI 61BL -> COMPSCI 61C -> COMPSCI 161. [C1, C2]\nNext step: Choose the 61B or 61BL branch first, then finish COMPSCI 61C before enrolling in COMPSCI 161. [C1, C2]\nWhy (requirements/prereqs satisfied):\n- COMPSCI 61C accepts either COMPSCI 61B or COMPSCI 61BL after COMPSCI 61A. [C1, C2]\n- COMPSCI 161 then requires COMPSCI 61C plus its own listed direct prerequisites. [C1, C2]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61C Rules & Requirements, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 161 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "chain_reasoning",
+      "query_id": "CHAIN-5",
+      "query": "I am starting fresh. What four-term path gets me to COMPSCI 189 if I can only take two technical courses per term?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nRecommended plan: a conservative four-term path to COMPSCI 189 is Term 1: COMPSCI 61A and MATH 53; Term 2: COMPSCI 61B and MATH 54; Term 3: COMPSCI 70 and COMPSCI 61C; Term 4: COMPSCI 189 and another eligible upper-division CS course. [C1, C2, C3, C4]\nNext step: Verify your math placement or completed calculus background separately if MATH 53 and MATH 54 are still outstanding. [C1, C2, C3, C4]\nWhy (requirements/prereqs satisfied):\n- COMPSCI 189 requires the prerequisite set captured in the Berkeley catalog. [C1, C2, C3, C4]\n- This path keeps the technical load at two courses or fewer per term while preserving prerequisite order. [C1, C2, C3, C4]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61B Rules & Requirements, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 70 Rules & Requirements, accessed 2026-03-27]\n- [C3] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 61C Rules & Requirements, accessed 2026-03-27]\n- [C4] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 189 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- This sample path assumes you can begin COMPSCI 61A and MATH 53 without additional placement constraints. [C1, C2, C3, C4]"
+    },
+    {
+      "category": "program_requirements",
+      "query_id": "PROG-1",
+      "query": "What is the total number of units required to complete the Berkeley computer science degree?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nBerkeley's bachelor's degree requires at least 120 units, and the BA in Computer Science also requires the university, campus, college, and major requirements. [C1, C2]\nNext step: Use your degree audit to separate major units from remaining campus and college requirements. [C1, C2]\nWhy (requirements/prereqs satisfied):\n- To earn a Berkeley bachelor's degree, students must complete at least 120 semester units and maintain at least a 2.0 cumulative GPA. The senior residence rule requires at least 24 of the remaining units after reaching 90 total units to be completed in residence over at least two semesters, with at least 6 units in each semester. [C1, C2]\n- The BA path requires the university and campus requirements plus the College of Computing, Data Science, and Society requirements. The page states that CDSS breadth is the same as the College of Letters and Science Seven-Course Breadth requirement, except that foreign language may be used to satisfy International Studies. The page also notes the bachelor's degree minimum of 120 units and at least 36 upper-division units. [C1, C2]\nCitations:\n- [C1] [Source: https://undergraduate.catalog.berkeley.edu/undergraduate/degree-requirements/, Units and GPA, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, College and Breadth Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "program_requirements",
+      "query_id": "PROG-2",
+      "query": "Which parts of the Berkeley computer science degree are core requirements versus electives?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nFor the Berkeley CS BA, the core is the lower-division CS sequence plus the upper-division major-course structure; elective flexibility appears in the five upper-division CS selections, the approved non-CS technical elective, and college breadth choices. [C1, C2]\nNext step: Match your completed courses against the lower-division sequence first, then use eligible upper-division courses to fill the remaining major slots. [C1, C2]\nWhy (requirements/prereqs satisfied):\n- The Berkeley BA in Computer Science includes lower-division preparation built around COMPSCI 61A, COMPSCI 61B or COMPSCI 61BL, COMPSCI 70, and COMPSCI 61C, plus approved mathematics support. The plan of study shows five upper-division CS major courses and one approved upper-division non-CS technical elective. [C1, C2]\n- The BA major page highlights an upper-division design-course bucket that includes COMPSCI 152, 160, 161, 162, 164, and 168, and the sample schedule labels the upper-division CS major sequence as five major courses. Students also complete one approved upper-division non-CS technical elective. [C1, C2]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, Major Requirements, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, Upper Division Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "program_requirements",
+      "query_id": "PROG-3",
+      "query": "What breadth requirements do computer science students need to satisfy?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nCS BA students still complete Berkeley college and campus breadth work. The CS BA page says CDSS breadth follows the Letters and Science Seven-Course Breadth structure, with the noted foreign-language exception for International Studies. [C1]\nNext step: Check your degree audit or advisor-approved breadth plan before using a breadth course to double-count toward another requirement. [C1]\nWhy (requirements/prereqs satisfied):\n- The BA path requires the university and campus requirements plus the College of Computing, Data Science, and Society requirements. The page states that CDSS breadth is the same as the College of Letters and Science Seven-Course Breadth requirement, except that foreign language may be used to satisfy International Studies. The page also notes the bachelor's degree minimum of 120 units and at least 36 upper-division units. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, College and Breadth Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "program_requirements",
+      "query_id": "PROG-4",
+      "query": "What is the difference between the CS major and the CS minor?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nThe BA major is a full bachelor's program with university, campus, college, and major requirements; the CS minor is a seven-course add-on centered on the lower-division CS sequence plus three upper-division COMPSCI courses. [C1, C2]\nNext step: If you are choosing between them, compare your remaining breadth and residence obligations, not just the CS course count. [C1, C2]\nWhy (requirements/prereqs satisfied):\n- UC Berkeley distinguishes between the Bachelor of Arts in Computer Science and the Bachelor of Science in Electrical Engineering and Computer Sciences. The BA path is housed in the College of Computing, Data Science, and Society and combines university, campus, college, and major requirements. [C1, C2]\n- The Computer Science minor consists of seven courses: COMPSCI 61A, COMPSCI 61B or COMPSCI 61BL, COMPSCI 61C, COMPSCI 70, and three upper-division COMPSCI courses. The page states that at least three upper-division courses for the minor must be taken at Berkeley and that students must earn at least a 2.0 GPA in the upper-division courses used for the minor. [C1, C2]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, Choosing a Computer Science Path, accessed 2026-03-27]\n- [C2] [Source: https://guide.berkeley.edu/undergraduate/degree-programs/computer-science/, Minor Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "program_requirements",
+      "query_id": "PROG-5",
+      "query": "How many units must be completed in residence at the university?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nBerkeley's senior residence rule requires at least 24 of the remaining units after 90 total units to be completed in residence over at least two semesters, with at least 6 units in each semester. [C1]\nNext step: Confirm how your current Berkeley unit total maps to the senior-residence rule before making an accelerated plan. [C1]\nWhy (requirements/prereqs satisfied):\n- To earn a Berkeley bachelor's degree, students must complete at least 120 semester units and maintain at least a 2.0 cumulative GPA. The senior residence rule requires at least 24 of the remaining units after reaching 90 total units to be completed in residence over at least two semesters, with at least 6 units in each semester. [C1]\nCitations:\n- [C1] [Source: https://undergraduate.catalog.berkeley.edu/undergraduate/degree-requirements/, Units and GPA, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- None"
+    },
+    {
+      "category": "safe_abstention",
+      "query_id": "OOO-1",
+      "query": "Is COMPSCI 161 offered next semester?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot in catalog: I don't have that information in the provided catalog/policies.\nNext step: Check the Berkeley schedule of classes or the department website for live offering details.\nNext step: Ask an advisor or the department if you need transfer, waiver, or instructor-consent guidance.\nWhy (requirements/prereqs satisfied):\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog.\nCitations:\n- None\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
+    },
+    {
+      "category": "safe_abstention",
+      "query_id": "OOO-2",
+      "query": "Which professor is teaching COMPSCI 162 next term?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot in catalog: I don't have that information in the provided catalog/policies.\nNext step: Check the Berkeley schedule of classes or the department website for live offering details.\nNext step: Ask an advisor or the department if you need transfer, waiver, or instructor-consent guidance.\nWhy (requirements/prereqs satisfied):\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog.\nCitations:\n- None\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
+    },
+    {
+      "category": "safe_abstention",
+      "query_id": "OOO-3",
+      "query": "Will COMPSCI 170 still be required next year?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot in catalog: I don't have that information in the provided catalog/policies.\nNext step: Check the Berkeley schedule of classes or the department website for live offering details.\nNext step: Ask an advisor or the department if you need transfer, waiver, or instructor-consent guidance.\nWhy (requirements/prereqs satisfied):\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog.\nCitations:\n- None\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
+    },
+    {
+      "category": "safe_abstention",
+      "query_id": "OOO-4",
+      "query": "I took a similar course elsewhere. Will it transfer and count as COMPSCI 61B?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot in catalog: I don't have that information in the provided catalog/policies.\nNext step: Check the Berkeley schedule of classes or the department website for live offering details.\nNext step: Ask an advisor or the department if you need transfer, waiver, or instructor-consent guidance.\nWhy (requirements/prereqs satisfied):\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog.\nCitations:\n- None\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
+    },
+    {
+      "category": "safe_abstention",
+      "query_id": "OOO-5",
+      "query": "Can an instructor waive the prerequisites for COMPSCI 189?",
+      "correct": true,
+      "citation_present": true,
+      "format_ok": true,
+      "response": "Answer / Plan:\nNot in catalog: I don't have that information in the provided catalog/policies.\nNext step: Check the Berkeley schedule of classes or the department website for live offering details.\nNext step: Ask an advisor or the department if you need transfer, waiver, or instructor-consent guidance.\nWhy (requirements/prereqs satisfied):\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog.\nCitations:\n- None\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
+    }
+  ]
+}
