@@ -36,6 +36,38 @@ class CoursePlanningAssistantTests(unittest.TestCase):
         self.assertIn("breadth", result["formatted_response"].lower())
         self.assertTrue(result["citations"])
 
+    def test_min_grade_requirement_is_enforced(self) -> None:
+        result = self.assistant.check_eligibility(
+            question="Can I take COMPSCI C187 if I completed COMPSCI C100 with a D?",
+            student_courses=["COMPSCI C100:D"],
+            target_course="COMPSCI C187",
+        )
+        self.assertIn("Not Eligible", result["raw_response"])
+        self.assertIn("C-", result["formatted_response"])
+
+    def test_corequisite_rule_returns_need_more_info(self) -> None:
+        result = self.assistant.check_eligibility(
+            question="If I have COMPSCI 61C, can I take COMPSCI 186 concurrently with COMPSCI 47C?",
+            student_courses=["COMPSCI 61C"],
+            target_course="COMPSCI 186",
+        )
+        self.assertIn("Need More Info", result["raw_response"])
+        self.assertIn("co-requisite", result["formatted_response"].lower())
+
+    def test_instructor_consent_exception_is_safe(self) -> None:
+        result = self.assistant.check_eligibility(
+            question="Can instructor consent let me take COMPSCI 189 without MATH 54?",
+            student_courses=["MATH 53", "COMPSCI 70"],
+            target_course="COMPSCI 189",
+        )
+        self.assertIn("Need More Info", result["raw_response"])
+        self.assertIn("instructor consent", result["formatted_response"].lower())
+
+    def test_alias_lookup_handles_cs_prefix(self) -> None:
+        result = self.assistant.answer_question("What do I need before taking CS 170?")
+        self.assertIn("COMPSCI 170", result["formatted_response"])
+        self.assertTrue(result["citations"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -8,10 +8,10 @@
 
 ## Source types
 
-- 20 curated course descriptions
+- 22 curated course descriptions
 - 7 program / requirement records
 - 6 academic policy records
-- 33 total curated source-backed documents in the processed dataset
+- 35 total curated source-backed documents in the processed dataset
 
 ## Machine-readable inventory
 

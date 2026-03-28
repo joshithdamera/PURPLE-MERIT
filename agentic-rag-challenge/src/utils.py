@@ -30,7 +30,10 @@ class CourseRecord:
     catalog_year: str
     accessed_date: str
     min_grade: str | None = None
+    co_requisite_policy: str | None = None
+    consent_exception: str | None = None
     sequence_rank: int = 999
+    aliases: list[str] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
 
 
@@ -106,7 +109,7 @@ def parse_completed_courses(raw_value: str) -> list[str]:
     return [item.strip() for item in raw_value.split(",") if item.strip()]
 
 
-COURSE_CODE_RE = re.compile(r"\b(?:COMPSCI|MATH|EECS|DATA|STAT|PHYSICS|ENGIN)\s?[A-Z]?\d+[A-Z]{0,2}\b")
+COURSE_CODE_RE = re.compile(r"\b(?:COMPSCI|CS|COMPUTER SCIENCE|MATH|EECS|DATA|STAT|PHYSICS|ENGIN)\s?[A-Z]?\d+[A-Z]{0,2}\b")
 GRADE_ORDER = {
     "A+": 12,
     "A": 11,
@@ -127,6 +130,9 @@ GRADE_ORDER = {
 
 def normalize_course_code(value: str) -> str:
     text = value.upper().strip()
+    text = text.replace("COMPUTER SCIENCE", "COMPSCI")
+    if text.startswith("CS "):
+        text = text.replace("CS ", "COMPSCI ", 1)
     text = re.sub(r"\s+", " ", text)
     return text
 
@@ -180,7 +186,10 @@ def load_course_records(path: str | Path = PROCESSED_DIR / "courses.jsonl") -> d
             catalog_year=row["catalog_year"],
             accessed_date=row["accessed_date"],
             min_grade=row.get("min_grade"),
+            co_requisite_policy=row.get("co_requisite_policy"),
+            consent_exception=row.get("consent_exception"),
             sequence_rank=row.get("sequence_rank", 999),
+            aliases=[normalize_course_code(alias) for alias in row.get("aliases", [])],
             tags=row.get("tags", []),
         )
         records[record.course_code] = record

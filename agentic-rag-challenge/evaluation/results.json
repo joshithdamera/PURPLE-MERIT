@@ -63,7 +63,7 @@
       "correct": true,
       "citation_present": true,
       "format_ok": true,
-      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 186. [C1]\nNext step: You can add COMPSCI 186 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- The alternative prerequisite `COMPSCI 61C OR COMPSCI 47C` is satisfied via COMPSCI 61C. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The catalog also notes co-requisite handling for COMPSCI 47C in some cases. [C1]"
+      "response": "Answer / Plan:\nEligible: based on the completed courses provided, you satisfy the listed prerequisites for COMPSCI 186. [C1]\nNext step: You can add COMPSCI 186 to a draft term plan, then verify live scheduling details separately. [C1]\nWhy (requirements/prereqs satisfied):\n- The alternative prerequisite `COMPSCI 61C OR COMPSCI 47C` is satisfied via COMPSCI 61C. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- COMPSCI 47C may be taken concurrently only for transfer students; otherwise one of the listed prerequisites should already be complete. [C1]"
     },
     {
       "category": "simple_prerequisite",
@@ -72,7 +72,7 @@
       "correct": true,
       "citation_present": true,
       "format_ok": true,
-      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 186 are not fully satisfied yet. [C1]\nNext step: Complete COMPSCI 61C, COMPSCI 47C before attempting COMPSCI 186. [C1]\nWhy (requirements/prereqs satisfied):\n- You still need COMPSCI 61C or COMPSCI 47C for COMPSCI 186. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- The catalog also notes co-requisite handling for COMPSCI 47C in some cases. [C1]"
+      "response": "Answer / Plan:\nNot Eligible: the listed prerequisites for COMPSCI 186 are not fully satisfied yet. [C1]\nNext step: Complete COMPSCI 61C, COMPSCI 47C before attempting COMPSCI 186. [C1]\nWhy (requirements/prereqs satisfied):\n- You still need COMPSCI 61C or COMPSCI 47C for COMPSCI 186. [C1]\nCitations:\n- [C1] [Source: https://guide.berkeley.edu/courses/compsci/compsci.pdf, COMPSCI 186 Rules & Requirements, accessed 2026-03-27]\nClarifying questions (if needed):\n- None\nAssumptions / Not in catalog:\n- COMPSCI 47C may be taken concurrently only for transfer students; otherwise one of the listed prerequisites should already be complete. [C1]"
     },
     {
       "category": "simple_prerequisite",

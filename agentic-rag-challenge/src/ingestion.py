@@ -88,11 +88,19 @@ class CatalogLoader:
         prereqs = "; ".join(course_data.get("prerequisites", [])) or "None"
         coreqs = "; ".join(course_data.get("co_requisites", [])) or "None"
         notes = course_data.get("notes") or "None"
+        min_grade = course_data.get("min_grade") or "None"
+        coreq_policy = course_data.get("co_requisite_policy") or "None"
+        consent_exception = course_data.get("consent_exception") or "None"
+        aliases = "; ".join(course_data.get("aliases", [])) or "None"
         return (
             f"COURSE: {course_data['course_code']} - {course_data['title']}\n"
             f"UNITS: {course_data['units']}\n"
             f"PREREQUISITES: {prereqs}\n"
+            f"MIN GRADE: {min_grade}\n"
             f"CO-REQUISITES: {coreqs}\n"
+            f"CO-REQUISITE POLICY: {coreq_policy}\n"
+            f"CONSENT EXCEPTION: {consent_exception}\n"
+            f"ALIASES: {aliases}\n"
             f"DESCRIPTION: {course_data['description']}\n"
             f"NOTES: {notes}"
         )
@@ -122,4 +130,3 @@ class CatalogLoader:
             "accessed_date": policy_data["accessed_date"],
         }
         return json.dumps(payload, indent=2)
-

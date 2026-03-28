@@ -3,11 +3,11 @@
 - Institution: University of California, Berkeley
 - Catalog Years: 2024-2025 and 2025-2026
 - Status: curated and loaded into `data/processed/`
-- Dataset document count: 33
+- Dataset document count: 35
 
 ## Planned coverage
 
-- Computer Science courses: 18
+- Computer Science courses: 20
 - Mathematics courses: 2
 - Degree / program records: 7
 - Academic policies: 6

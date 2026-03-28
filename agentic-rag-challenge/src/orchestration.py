@@ -88,7 +88,6 @@ OUT_OF_SCOPE_PATTERNS = [
     r"\bsection\b",
     r"\btransfer\b",
     r"\bequivalen",
-    r"\bwaiver\b",
     r"\bpermission code\b",
 ]
 
@@ -187,6 +186,10 @@ class CoursePlanningAssistant:
         for alias, code in COURSE_TITLE_ALIASES.items():
             if alias in lowered and code in self.courses:
                 return self.courses[code]
+        normalized_question = normalize_course_code(question)
+        for record in self.courses.values():
+            if normalized_question in record.aliases or any(alias in normalized_question for alias in record.aliases):
+                return record
         return None
 
     def _initialize_retriever(self):
@@ -284,6 +287,7 @@ class CoursePlanningAssistant:
         citations = [course_citation(course)]
         reasons: list[str] = []
         missing_groups: list[list[str]] = []
+        missing_coreqs: list[str] = []
 
         for clause in course.prerequisites:
             codes = extract_course_codes(clause)
@@ -293,22 +297,36 @@ class CoursePlanningAssistant:
             if satisfied:
                 chosen = satisfied[0]
                 if len(codes) == 1:
-                    reasons.append(f"You completed {chosen}, which satisfies one listed prerequisite for {course.course_code}.")
+                    if course.min_grade and completed_map.get(chosen):
+                        reasons.append(f"You completed {chosen} with a grade that meets the catalog minimum of {course.min_grade} for {course.course_code}.")
+                    else:
+                        reasons.append(f"You completed {chosen}, which satisfies one listed prerequisite for {course.course_code}.")
                 else:
-                    reasons.append(f"The alternative prerequisite `{clause}` is satisfied via {chosen}.")
+                    if course.min_grade and completed_map.get(chosen):
+                        reasons.append(f"The alternative prerequisite `{clause}` is satisfied via {chosen}, and the recorded grade meets the minimum of {course.min_grade}.")
+                    else:
+                        reasons.append(f"The alternative prerequisite `{clause}` is satisfied via {chosen}.")
             else:
                 missing_groups.append(codes)
-                reasons.append(f"You still need {self._clause_text(codes)} for {course.course_code}.")
+                if course.min_grade:
+                    reasons.append(f"You still need {self._clause_text(codes)} with at least a grade of {course.min_grade} for {course.course_code}.")
+                else:
+                    reasons.append(f"You still need {self._clause_text(codes)} for {course.course_code}.")
 
         coreq_note = ""
         if course.co_requisites:
-            coreq_note = f"The catalog also notes co-requisite handling for {', '.join(course.co_requisites)} in some cases."
+            missing_coreqs = [code for code in course.co_requisites if code not in completed_map]
+            if course.co_requisite_policy:
+                coreq_note = course.co_requisite_policy
+            else:
+                coreq_note = f"The catalog also notes co-requisite handling for {', '.join(course.co_requisites)} in some cases."
 
         return {
             "eligible": not missing_groups,
             "reasons": reasons or [f"The curated record for {course.course_code} does not add extra evaluable prerequisite clauses."],
             "missing_groups": missing_groups,
             "missing_courses": _unique([code for group in missing_groups for code in group]),
+            "missing_coreqs": missing_coreqs,
             "coreq_note": coreq_note,
             "citations": citations,
         }
@@ -419,6 +437,8 @@ class CoursePlanningAssistant:
             if codes:
                 prereq_text.append(self._clause_text(codes))
         answer = f"{course.course_code} requires {' and '.join(prereq_text)}." if prereq_text else f"{course.course_code} does not have a structured prerequisite chain in the curated records."
+        if course.min_grade:
+            answer = f"{answer} The catalog-grounded record also enforces a minimum grade of {course.min_grade} for the listed preparation."
         why = [course.description]
         if course.notes:
             why.append(course.notes)
@@ -426,11 +446,18 @@ class CoursePlanningAssistant:
         assumptions = []
         if "co-requisite" in question.lower() or "corequisite" in question.lower():
             if course.co_requisites:
-                answer = f"{course.course_code} includes a catalog co-requisite note for {', '.join(course.co_requisites)}."
+                if course.co_requisite_policy:
+                    answer = f"{course.course_code} includes a catalog co-requisite rule for {', '.join(course.co_requisites)}: {course.co_requisite_policy}"
+                else:
+                    answer = f"{course.course_code} includes a catalog co-requisite note for {', '.join(course.co_requisites)}."
                 why.append(course.notes)
-                next_steps = ["Use the course note exactly as written: the special co-requisite path is conditional and should not be generalized beyond the catalog text."]
+                next_steps = ["Use the catalog co-requisite wording literally when deciding whether prior completion or concurrent enrollment is allowed."]
             else:
                 assumptions.append("No explicit co-requisite rule was captured for this course in the curated catalog records.")
+        if any(term in question.lower() for term in ["consent", "permission", "waive", "waiver"]) and course.consent_exception:
+            answer = f"{course.course_code} has a catalog exception path: {course.consent_exception}"
+            why.append(course.notes)
+            next_steps = ["Treat instructor permission as an approval step outside the catalog; the assistant cannot determine whether it will be granted."]
         citations = self._merge_citations(
             evaluation["citations"],
             self._retrieved_citations(question or f"Requirements for {course.course_code}", preferred_type="course", course_code=course.course_code),
@@ -452,6 +479,68 @@ class CoursePlanningAssistant:
     def check_eligibility(self, student_courses: list[str], target_course: str, question: str | None = None) -> dict[str, Any]:
         question = question or ""
         lowered = question.lower()
+        course = self._find_course(question, explicit_course=target_course)
+
+        if course and any(term in lowered for term in ["consent", "permission", "waive", "waiver"]):
+            citations = self._merge_citations(
+                [course_citation(course)],
+                self._retrieved_citations(question or f"Consent exception for {course.course_code}", preferred_type="course", course_code=course.course_code),
+            )
+            if course.consent_exception:
+                answer = f"Need More Info: {course.course_code} has a catalog exception path based on instructor consent, but the provided documents cannot determine whether that approval will be granted."
+                formatted = format_response(
+                    answer=answer,
+                    why=[
+                        course.consent_exception,
+                        course.notes,
+                    ],
+                    citations=citations,
+                    clarifying_questions=[],
+                    assumptions=["Instructor-consent decisions are outside what the static catalog can verify automatically."],
+                )
+                return {
+                    "answer": answer,
+                    "raw_response": answer,
+                    "citations": citations,
+                    "formatted_response": formatted,
+                }
+            return self._abstain(
+                "The catalog record loaded for this course does not provide a machine-checkable instructor-consent exception.",
+                ["Check the department or instructor for a waiver or consent process."],
+            )
+
+        if course and any(term in lowered for term in ["co-requisite", "corequisite", "concurrently", "concurrent"]):
+            completed_map = parse_completed_with_grades(student_courses)
+            evaluation = self._evaluate_course(course, completed_map)
+            citations = self._merge_citations(
+                evaluation["citations"],
+                self._retrieved_citations(question or f"Co-requisite rules for {course.course_code}", preferred_type="course", course_code=course.course_code),
+            )
+            missing_coreqs = evaluation["missing_coreqs"]
+            assumptions: list[str] = []
+            if not missing_coreqs:
+                answer = f"Eligible: the recorded co-requisite for {course.course_code} is already satisfied by prior completion."
+                next_steps = [f"You can treat the co-requisite condition for {course.course_code} as satisfied based on the courses you listed."]
+            elif course.co_requisite_policy:
+                answer = f"Need More Info: {course.course_code} has a conditional co-requisite rule for {', '.join(missing_coreqs)}."
+                next_steps = ["Check whether you meet the stated co-requisite condition before assuming concurrent enrollment is allowed."]
+                assumptions.append(course.co_requisite_policy)
+            else:
+                answer = f"Not Eligible: {course.course_code} still requires co-requisite enrollment or completion for {', '.join(missing_coreqs)}."
+                next_steps = [f"Complete or co-enroll in {', '.join(missing_coreqs)} exactly as the catalog allows before attempting {course.course_code}."]
+            formatted = format_response(
+                answer=answer,
+                why=evaluation["reasons"] + ([course.co_requisite_policy] if course.co_requisite_policy else []),
+                citations=citations,
+                clarifying_questions=[],
+                assumptions=assumptions,
+            )
+            return {
+                "answer": answer,
+                "raw_response": answer,
+                "citations": citations,
+                "formatted_response": formatted,
+            }
 
         if self._is_out_of_scope(question):
             return self._abstain(
@@ -563,7 +652,6 @@ class CoursePlanningAssistant:
                 "formatted_response": formatted,
             }
 
-        course = self._find_course(question, explicit_course=target_course)
         if not course:
             return self._abstain(
                 "I could not map the requested course to a curated Berkeley course record.",

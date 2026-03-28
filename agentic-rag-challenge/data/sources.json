@@ -5,7 +5,7 @@
     "2025-2026"
   ],
   "accessed_date": "2026-03-27",
-  "document_count": 33,
+  "document_count": 35,
   "documents": [
     {
       "id": "course-compsci-61a",
@@ -146,6 +146,20 @@
       "source_url": "https://guide.berkeley.edu/courses/compsci/compsci.pdf",
       "section": "COMPSCI 195",
       "note": "Course description and prerequisite summary for COMPSCI 195 Social Implications of Computer Technology."
+    },
+    {
+      "id": "course-compsci-c100",
+      "category": "course-description",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/courses/COMPSCI/",
+      "section": "COMPSCI C100",
+      "note": "Course description and prerequisite summary for COMPSCI C100 Principles and Techniques of Data Science, including minimum-grade and concurrent-enrollment language."
+    },
+    {
+      "id": "course-compsci-c187",
+      "category": "course-description",
+      "source_url": "https://undergraduate.catalog.berkeley.edu/courses/COMPSCI/",
+      "section": "COMPSCI C187",
+      "note": "Course description and prerequisite summary for COMPSCI C187 Introduction to Modern Biostatistical Theory and Practice, including minimum-grade language."
     },
     {
       "id": "cs-ba-overview",
