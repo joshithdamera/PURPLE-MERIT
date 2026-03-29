@@ -91,6 +91,15 @@ OUT_OF_SCOPE_PATTERNS = [
     r"\bpermission code\b",
 ]
 
+GENERAL_PROMPT_PATTERNS = [
+    r"^\s*(hi|hello|hey|hii|yo)\b",
+    r"\bhow are you\b",
+    r"\bwhat can you do\b",
+    r"^\s*help\s*$",
+    r"\bthank you\b",
+    r"^\s*thanks\s*$",
+]
+
 
 def _unique(items: list[str]) -> list[str]:
     ordered: list[str] = []
@@ -276,6 +285,44 @@ class CoursePlanningAssistant:
         }
 
     @staticmethod
+    def _is_general_prompt(question: str) -> bool:
+        lowered = question.lower().strip()
+        return any(re.search(pattern, lowered) for pattern in GENERAL_PROMPT_PATTERNS)
+
+    def _general_response(self, question: str) -> dict[str, Any]:
+        lowered = question.lower().strip()
+        if "thank" in lowered:
+            answer = "You're welcome. I can help with Berkeley prerequisites, degree requirements, or next-term course planning whenever you're ready."
+            why = "This is a general conversational response, not a catalog-grounded policy answer."
+            next_steps = ["Ask about a Berkeley course, a major/minor requirement, or a next-term plan."]
+        elif "what can you do" in lowered or lowered == "help":
+            answer = "I can check Berkeley course prerequisites, explain catalog-grounded program and policy rules, and build a next-term plan from your completed courses."
+            why = "This describes the assistant's supported tasks rather than a catalog claim."
+            next_steps = ["Try a question like `Can I take COMPSCI 170?` or `Build my next term plan.`"]
+        elif "how are you" in lowered:
+            answer = "I'm ready to help. Ask me about Berkeley prerequisites, degree requirements, or course planning."
+            why = "This is a general conversational response."
+            next_steps = ["Ask a Berkeley catalog question when you're ready."]
+        else:
+            answer = "Hi. I can help with Berkeley course planning, prerequisites, degree requirements, and term plans."
+            why = "This is a general greeting response."
+            next_steps = ["Ask about a course, a requirement, or your next term plan."]
+
+        formatted = format_response(
+            answer=answer,
+            why=why,
+            next_steps=next_steps,
+            citations=[],
+            clarifying_questions=[],
+            assumptions=["General conversational replies are not catalog-grounded citations."],
+        )
+        return {
+            "answer": answer,
+            "citations": [],
+            "formatted_response": formatted,
+        }
+
+    @staticmethod
     def _clause_text(clause_codes: list[str]) -> str:
         if not clause_codes:
             return ""
@@ -397,10 +444,29 @@ class CoursePlanningAssistant:
         elif "major" in lowered and "minor" in lowered:
             overview = self.requirements_by_id["CS-BA-OVERVIEW"]
             minor = self.requirements_by_id["CS-MINOR"]
-            answer = "The BA major is a full bachelor's program with university, campus, college, and major requirements; the CS minor is a seven-course add-on centered on the lower-division CS sequence plus three upper-division COMPSCI courses."
-            why = [overview.content, minor.content]
-            citations = self._merge_citations([requirement_citation(overview), requirement_citation(minor)], requirement_rag)
-            next_steps = ["If you are choosing between them, compare your remaining breadth and residence obligations, not just the CS course count."]
+            eecs = self.requirements_by_id["EECS-BS-MAJOR"]
+            answer = (
+                "At Berkeley, 'computer science major' is not a single label: the catalog distinguishes the BA in "
+                "Computer Science from the separate BS in Electrical Engineering and Computer Sciences. For this "
+                "major-versus-minor comparison, the curated CS major record is the BA in Computer Science page. "
+                "Compared with the CS minor, the BA major is a full bachelor's degree path with university, campus, "
+                "college, and major requirements inside a 120-unit degree, while the CS minor is a seven-course "
+                "add-on built around the lower-division CS sequence plus three upper-division COMPSCI courses."
+            )
+            why = [
+                "Berkeley distinguishes the BA in Computer Science from the separate EECS BS, so 'CS major' needs that naming context.",
+                eecs.content,
+                "The BA path carries the broader bachelor's-degree structure, not just the CS course list.",
+                overview.content,
+                "The minor is a narrower secondary program focused on a compact seven-course CS package.",
+                minor.content,
+            ]
+            citations = self._merge_citations([requirement_citation(overview), requirement_citation(minor), requirement_citation(eecs)], requirement_rag)
+            next_steps = [
+                "If you are choosing between them, first decide whether you mean the BA in Computer Science or the separate EECS BS.",
+                "Then compare the BA's full degree obligations against the minor's smaller seven-course footprint.",
+                "Use your degree audit to see whether breadth, residence, and total-unit requirements make the BA or minor more realistic for your timeline.",
+            ]
             assumptions = []
         elif "residence" in lowered:
             units_policy = self.policies_by_id["POLICY-UNITS-GPA"]
@@ -698,6 +764,9 @@ class CoursePlanningAssistant:
 
     def answer_question(self, question: str) -> dict[str, Any]:
         lowered = question.lower()
+        if self._is_general_prompt(question):
+            return self._general_response(question)
+
         if self._is_out_of_scope(question):
             return self._abstain(
                 "The answer depends on live scheduling, transfer review, waivers, or future policy changes that are not established in the provided catalog."
@@ -759,8 +828,19 @@ class CoursePlanningAssistant:
         completed_map = parse_completed_with_grades(student_profile.get("completed_courses", []))
         completed_codes = set(completed_map)
         sequence = PLAN_SEQUENCES.get(program, PLAN_SEQUENCES["BA Computer Science"])
+        plan_request = str(student_profile.get("request") or "").strip()
+        lowered_request = plan_request.lower()
         max_courses = int(student_profile.get("max_courses") or 3)
         max_credits = int(student_profile.get("max_credits") or 99)
+        plan_focus = ""
+
+        if any(token in lowered_request for token in ["light", "lighter", "conservative", "manageable", "fewer"]):
+            max_courses = min(max_courses, 2)
+            plan_focus = "Planning focus: lighter schedule."
+        elif any(token in lowered_request for token in ["aggressive", "maximize", "maximise", "heavier", "more courses"]):
+            plan_focus = "Planning focus: more aggressive schedule within your stated load limit."
+        elif "stay on track" in lowered_request or "on track" in lowered_request:
+            plan_focus = "Planning focus: staying on track with the curated Berkeley sequence."
 
         chosen: list[CourseRecord] = []
         why: list[str] = []
@@ -814,10 +894,14 @@ class CoursePlanningAssistant:
         citations.extend(requirement_citation(record) for record in major_records[:2])
         citations = self._merge_citations(citations, self._retrieved_citations(f"Degree requirements for {program}", preferred_type="requirement"))
         plan_lines = [f"{record.course_code} ({record.units}) - {record.title}" for record in chosen]
+        if plan_focus:
+            plan_lines.insert(0, plan_focus)
         next_steps = [
             "Verify live semester availability in the Berkeley schedule of classes before registration.",
             "Use your degree audit to make sure breadth and campus requirements still fit around these technical courses.",
         ]
+        if plan_request and not plan_focus:
+            next_steps.insert(0, f"Your latest planning request was: {plan_request}")
         assumptions = [
             "The catalog sources used here do not guarantee that a course is offered in your target term.",
             "Transfer credit, waived prerequisites, and instructor-consent paths need advisor or department confirmation.",

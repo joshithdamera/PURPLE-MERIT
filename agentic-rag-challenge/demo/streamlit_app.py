@@ -14,6 +14,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from orchestration import CoursePlanningAssistant  # noqa: E402
+from utils import extract_course_codes  # noqa: E402
 
 
 SECTION_MAP = {
@@ -81,6 +82,27 @@ st.markdown(
         border-right: 1px solid var(--border);
       }
 
+      [data-testid="stSidebar"] * {
+        color: var(--text) !important;
+      }
+
+      [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+      [data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+      [data-testid="stSidebar"] label,
+      [data-testid="stSidebar"] span {
+        color: var(--text) !important;
+      }
+
+      [data-testid="stSidebar"] [data-testid="stAlertContainer"] {
+        background: rgba(255, 244, 204, 0.96);
+        border: 1px solid #eed28f;
+        border-radius: 18px;
+      }
+
+      [data-testid="stSidebar"] [data-testid="stAlertContainer"] * {
+        color: #5b4316 !important;
+      }
+
       .block-container {
         max-width: 940px;
         padding-top: 1.4rem;
@@ -93,6 +115,7 @@ st.markdown(
         border-radius: 24px;
         padding: 0.6rem 0.9rem;
         box-shadow: var(--shadow);
+        overflow: hidden;
       }
 
       .hero {
@@ -152,6 +175,98 @@ st.markdown(
         border: 1px solid var(--border);
         border-radius: 22px;
         padding: 1rem 1.05rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .user-shell {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(252, 247, 240, 0.96));
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 0.9rem 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .user-mode {
+        display: inline-block;
+        color: #5d4a38;
+        background: #f4e3d4;
+        border: 1px solid #e7cdb4;
+        border-radius: 10px;
+        padding: 0.18rem 0.45rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      .user-body {
+        color: var(--text);
+        line-height: 1.6;
+        font-size: 1.02rem;
+        font-weight: 500;
+      }
+
+      .user-shell * {
+        color: var(--text) !important;
+      }
+
+      .detail-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 0.9rem 1rem;
+        margin-top: 0.85rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .detail-title {
+        color: var(--muted);
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .detail-list {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: var(--text);
+      }
+
+      .detail-list li {
+        margin: 0 0 0.42rem 0;
+        line-height: 1.65;
+      }
+
+      .detail-list li:last-child {
+        margin-bottom: 0;
+      }
+
+      .citation-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+
+      .citation-item {
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      .citation-item a {
+        color: #1d5fbf !important;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .citation-item a:hover {
+        text-decoration: underline;
       }
 
       .decision-badge {
@@ -203,15 +318,97 @@ st.markdown(
         color: var(--muted);
       }
 
+      [data-testid="stMetricValue"],
+      [data-testid="stMetricLabel"] {
+        color: var(--text) !important;
+      }
+
+      [data-testid="stSidebar"] [role="radiogroup"] label {
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(230, 218, 199, 0.92);
+        border-radius: 14px;
+        padding: 0.2rem 0.45rem;
+        margin-bottom: 0.28rem;
+      }
+
+      [data-testid="stSidebar"] textarea,
+      [data-testid="stSidebar"] input {
+        color: var(--text) !important;
+        background: rgba(255, 255, 255, 0.96) !important;
+        border: 1px solid var(--border) !important;
+      }
+
+      [data-testid="stSidebar"] textarea::placeholder,
+      [data-testid="stSidebar"] input::placeholder {
+        color: #8f8478 !important;
+      }
+
       div.stButton > button {
         border-radius: 999px;
         border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text) !important;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(76, 58, 39, 0.06);
       }
 
       div.stButton > button:hover {
         border-color: #d9b89a;
         color: var(--text);
+        background: rgba(255, 248, 240, 0.98);
+      }
+
+      div.stButton > button p,
+      div.stButton > button span {
+        color: var(--text) !important;
+      }
+
+      .composer-shell {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        background: linear-gradient(180deg, rgba(244, 237, 227, 0.2), rgba(244, 237, 227, 0.94) 22%, rgba(250, 246, 240, 0.98) 100%);
+        padding-top: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      .composer-shell [data-testid="stForm"] {
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 0.55rem 0.7rem 0.25rem 0.7rem;
+        box-shadow: var(--shadow);
+      }
+
+      .composer-shell [data-testid="stTextInput"] input {
+        color: var(--text) !important;
+        -webkit-text-fill-color: var(--text) !important;
+        caret-color: var(--text) !important;
+        opacity: 1 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 14px !important;
+        font-weight: 500 !important;
+      }
+
+      .composer-shell [data-testid="stTextInput"] input::placeholder {
+        color: #6f6459 !important;
+        -webkit-text-fill-color: #6f6459 !important;
+        opacity: 1 !important;
+      }
+
+      .composer-shell [data-testid="stTextInput"] label {
+        display: none !important;
+      }
+
+      .composer-shell button[kind="secondaryFormSubmit"] {
+        min-height: 2.75rem;
+      }
+
+      .composer-note {
+        color: var(--muted);
+        font-size: 0.86rem;
+        margin: 0.15rem 0 0.35rem 0.15rem;
       }
     </style>
     """,
@@ -234,10 +431,82 @@ def init_state() -> None:
     st.session_state.setdefault("target_term", "Fall")
     st.session_state.setdefault("max_courses", 3)
     st.session_state.setdefault("queued_prompt", None)
+    st.session_state.setdefault("queued_prompt_nonce", 0)
+    st.session_state.setdefault("last_processed_prompt_nonce", 0)
+    st.session_state.setdefault("plan_request", "")
 
 
 def parse_course_list(raw_value: str) -> list[str]:
     return [item.strip() for item in raw_value.split(",") if item.strip()]
+
+
+def infer_plan_context_from_prompt(prompt: str) -> dict[str, str | int]:
+    updates: dict[str, str | int] = {}
+    lowered = prompt.strip().lower()
+
+    if not lowered:
+        return updates
+
+    if any(token in lowered for token in ["cs minor", "computer science minor"]):
+        updates["program"] = "Computer Science Minor"
+    elif any(token in lowered for token in ["cs ba", "computer science ba", "computer science major", "computer science"]):
+        updates["program"] = "Computer Science"
+    elif "eecs" in lowered:
+        updates["program"] = "EECS"
+
+    catalog_match = re.search(r"\b(20\d{2}\s*-\s*20\d{2})\b", prompt)
+    if catalog_match:
+        updates["catalog_year"] = re.sub(r"\s+", "", catalog_match.group(1))
+
+    for term in ["Fall", "Spring", "Summer"]:
+        if term.lower() in lowered:
+            updates["target_term"] = term
+            break
+
+    detected_courses = extract_course_codes(prompt)
+    if detected_courses:
+        updates["completed_courses"] = ", ".join(detected_courses)
+
+    course_count_match = re.search(r"\b([1-6])\s*(?:courses?|classes?)\b", lowered)
+    if course_count_match:
+        updates["max_courses"] = int(course_count_match.group(1))
+    elif lowered.isdigit() and 1 <= int(lowered) <= 6:
+        updates["max_courses"] = int(lowered)
+
+    return updates
+
+
+def hydrate_term_plan_context(prompt: str) -> dict[str, str | int]:
+    updates = infer_plan_context_from_prompt(prompt)
+    for key, value in updates.items():
+        st.session_state[key] = value
+    return updates
+
+
+def is_general_prompt(prompt: str) -> bool:
+    lowered = prompt.lower().strip()
+    patterns = [
+        r"^\s*(hi|hello|hey|hii|yo)\b",
+        r"\bhow are you\b",
+        r"\bwhat can you do\b",
+        r"^\s*help\s*$",
+        r"\bthank you\b",
+        r"^\s*thanks\s*$",
+    ]
+    return any(re.search(pattern, lowered) for pattern in patterns)
+
+
+def queue_prompt(prompt: str) -> None:
+    st.session_state.queued_prompt = prompt
+    st.session_state.queued_prompt_nonce += 1
+
+
+def submit_composer_prompt() -> None:
+    prompt = st.session_state.get("composer_prompt_input", "").strip()
+    if not prompt:
+        return
+    queue_prompt(prompt)
+    st.session_state.composer_prompt_input = ""
 
 
 def parse_response_sections(text: str) -> dict[str, list[str] | str]:
@@ -282,6 +551,55 @@ def parse_citation(citation: str) -> tuple[str, str, str, str]:
     return match.group("label") or "", match.group("url"), match.group("section"), match.group("date")
 
 
+def render_detail_section(title: str, items: list[str]) -> None:
+    if not items:
+        return
+    list_items = "".join(f"<li>{html.escape(item)}</li>" for item in items)
+    st.markdown(
+        f"""
+        <div class="detail-card">
+          <div class="detail-title">{html.escape(title)}</div>
+          <ul class="detail-list">{list_items}</ul>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_citations_section(citations: list[str]) -> None:
+    if not citations:
+        return
+
+    entries: list[str] = []
+    seen: set[tuple[str, str]] = set()
+    for item in citations:
+        _, url, section, _ = parse_citation(item)
+        if section and url:
+            key = (url, section)
+            if key in seen:
+                continue
+            seen.add(key)
+            entries.append(
+                f'<div class="citation-item"><a href="{html.escape(url, quote=True)}" target="_blank">{html.escape(section)}</a></div>'
+            )
+        else:
+            key = ("", item)
+            if key in seen:
+                continue
+            seen.add(key)
+            entries.append(f'<div class="citation-item">{html.escape(item)}</div>')
+
+    st.markdown(
+        f"""
+        <div class="detail-card">
+          <div class="detail-title">Citations</div>
+          <div class="citation-stack">{''.join(entries)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def detect_course_in_prompt(prompt: str) -> str | None:
     match = re.search(r"\b(?:COMPSCI|MATH|EECS|DATA|STAT|PHYSICS|ENGIN)\s?[A-Z]?\d+[A-Z]{0,2}\b", prompt.upper())
     return match.group(0) if match else None
@@ -309,7 +627,9 @@ def run_current_request(assistant: CoursePlanningAssistant, prompt: str) -> None
     add_message("user", prompt, mode)
 
     with st.spinner("Checking Berkeley catalog records..."):
-        if mode == "Prerequisite Check":
+        if is_general_prompt(prompt):
+            result = assistant.answer_question(prompt)
+        elif mode == "Prerequisite Check":
             target_course = detect_course_in_prompt(prompt) or st.session_state.target_course
             result = assistant.check_eligibility(
                 question=prompt,
@@ -319,6 +639,9 @@ def run_current_request(assistant: CoursePlanningAssistant, prompt: str) -> None
         elif mode == "Program / Policy QA":
             result = assistant.answer_question(prompt)
         else:
+            updates = hydrate_term_plan_context(prompt)
+            if prompt.strip() and (not updates or any(token in prompt.lower() for token in ["plan", "track", "light", "lighter", "conservative", "aggressive", "fewer", "more"])):
+                st.session_state.plan_request = prompt.strip()
             result = assistant.generate_plan(
                 {
                     "program": st.session_state.program,
@@ -326,6 +649,7 @@ def run_current_request(assistant: CoursePlanningAssistant, prompt: str) -> None
                     "target_term": st.session_state.target_term,
                     "max_courses": int(st.session_state.max_courses),
                     "completed_courses": parse_course_list(st.session_state.completed_courses),
+                    "request": st.session_state.plan_request,
                 }
             )
     add_message("assistant", result["formatted_response"], mode)
@@ -336,7 +660,7 @@ def render_assistant_message(content: str) -> None:
     answer = sections["answer"] if isinstance(sections["answer"], str) else ""
     badge_text, badge_class = response_badge(answer)
 
-    with st.chat_message("assistant", avatar="AI"):
+    with st.chat_message("assistant", avatar="🎓"):
         st.markdown(
             f"""
             <div class="response-shell">
@@ -353,41 +677,24 @@ def render_assistant_message(content: str) -> None:
         assumptions = sections["assumptions"] if isinstance(sections["assumptions"], list) else []
         citations = sections["citations"] if isinstance(sections["citations"], list) else []
 
-        if why_items:
-            st.markdown('<div class="section-label">Why</div>', unsafe_allow_html=True)
-            for item in why_items:
-                st.markdown(f"- {item}")
-
-        if next_steps:
-            st.markdown('<div class="section-label">Next steps</div>', unsafe_allow_html=True)
-            for item in next_steps:
-                st.markdown(f"- {item}")
-
-        if citations:
-            with st.expander(f"Citations ({len(citations)})", expanded=True):
-                for item in citations:
-                    label, url, section, accessed_date = parse_citation(item)
-                    if section:
-                        prefix = f"**[{label}]** " if label else ""
-                        st.markdown(f"- {prefix}[{section}]({url})  \n  Accessed {accessed_date}")
-                    else:
-                        st.markdown(f"- {item}")
-
-        if clarifying:
-            with st.expander("Clarifying questions", expanded=True):
-                for item in clarifying:
-                    st.markdown(f"- {item}")
-
-        if assumptions:
-            with st.expander("Assumptions / not in catalog", expanded=not citations):
-                for item in assumptions:
-                    st.markdown(f"- {item}")
+        render_detail_section("Why", why_items)
+        render_detail_section("Next steps", next_steps)
+        render_citations_section(citations)
+        render_detail_section("Clarifying questions", clarifying)
+        render_detail_section("Assumptions / not in catalog", assumptions)
 
 
 def render_user_message(content: str, mode: str) -> None:
-    with st.chat_message("user", avatar="You"):
-        st.caption(mode)
-        st.markdown(content)
+    with st.chat_message("user", avatar="👤"):
+        st.markdown(
+            f"""
+            <div class="user-shell">
+              <div class="user-mode">{html.escape(mode)}</div>
+              <div class="user-body">{html.escape(content).replace(chr(10), "<br>")}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def render_quick_prompts() -> None:
@@ -395,7 +702,7 @@ def render_quick_prompts() -> None:
     columns = st.columns(len(prompts))
     for index, prompt in enumerate(prompts):
         if columns[index].button(prompt, key=f"preset_{st.session_state.mode}_{index}", use_container_width=True):
-            st.session_state.queued_prompt = prompt
+            queue_prompt(prompt)
 
 
 init_state()
@@ -442,10 +749,14 @@ with st.sidebar:
         st.selectbox("Target term", ["Fall", "Spring", "Summer"], key="target_term")
         st.slider("Max courses", min_value=1, max_value=6, key="max_courses")
         if st.button("Generate plan", use_container_width=True):
-            st.session_state.queued_prompt = "Build my next term plan."
+            queue_prompt("Build my next term plan.")
 
     if st.button("Clear conversation", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.plan_request = ""
+        st.session_state.queued_prompt = None
+        st.session_state.queued_prompt_nonce = 0
+        st.session_state.last_processed_prompt_nonce = 0
 
 st.markdown(
     """
@@ -469,20 +780,12 @@ st.markdown(
 
 render_quick_prompts()
 
-queued_prompt = st.session_state.pop("queued_prompt", None)
-typed_prompt = st.chat_input(
-    {
-        "Program / Policy QA": "Ask about major requirements, units, breadth, or Berkeley policy...",
-        "Prerequisite Check": "Ask if you're eligible for a course or what the prerequisite chain looks like...",
-        "Term Plan": "Ask for a next-term plan or use the Generate plan button in the sidebar...",
-    }[st.session_state.mode]
-)
-
-if typed_prompt:
-    queued_prompt = typed_prompt
-
-if queued_prompt:
-    run_current_request(assistant, queued_prompt)
+if st.session_state.queued_prompt_nonce > st.session_state.last_processed_prompt_nonce:
+    queued_prompt = st.session_state.queued_prompt
+    st.session_state.last_processed_prompt_nonce = st.session_state.queued_prompt_nonce
+    if queued_prompt:
+        run_current_request(assistant, queued_prompt)
+        st.session_state.queued_prompt = None
 
 if not st.session_state.messages:
     st.markdown(
@@ -499,3 +802,24 @@ for message in st.session_state.messages:
         render_user_message(message["content"], message["mode"])
     else:
         render_assistant_message(message["content"])
+
+st.markdown('<div class="composer-shell">', unsafe_allow_html=True)
+composer_columns = st.columns([8, 1.2])
+prompt_placeholder = {
+    "Program / Policy QA": "Ask about major requirements, units, breadth, or Berkeley policy...",
+    "Prerequisite Check": "Ask if you're eligible for a course or what the prerequisite chain looks like...",
+    "Term Plan": "Ask for a next-term plan or continue the planning conversation...",
+}[st.session_state.mode]
+composer_columns[0].text_input(
+    "Message",
+    value=st.session_state.get("composer_prompt_input", ""),
+    placeholder=prompt_placeholder,
+    label_visibility="collapsed",
+    key="composer_prompt_input",
+)
+composer_columns[1].button("Send", use_container_width=True, on_click=submit_composer_prompt)
+
+st.markdown(
+    f'<div class="composer-note">{html.escape(prompt_placeholder)}</div></div>',
+    unsafe_allow_html=True,
+)
